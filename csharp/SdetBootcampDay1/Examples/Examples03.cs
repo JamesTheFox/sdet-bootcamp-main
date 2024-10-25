@@ -31,7 +31,7 @@ namespace SdetBootcampDay1.Examples
                 calculator.Divide(0);
             });
 
-            Assert.That(dbze.Message, Is.EqualTo("Attempted to divide by zero."));
+            Assert.That(dbze!.Message, Is.EqualTo("Attempted to divide by zero."));
         }
 
         [Test]
@@ -41,10 +41,12 @@ namespace SdetBootcampDay1.Examples
 
             calculator.Add(5);
 
-            Assert.Throws<ArgumentException>(() =>
+            var dbze = Assert.Throws<DivideByZeroException>(() =>
             {
                 calculator.Divide(0);
             });
+
+            Assert.That(dbze!.Message, Is.EqualTo("Attempted to divide by zero."));
         }
     }
 }
