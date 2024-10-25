@@ -54,12 +54,13 @@ namespace SdetBootcampDay2.Exercises
 
             var orderHandler = new OrderHandler(stock, new PaymentProcessor(PaymentProcessorType.Paypal));
 
-            orderHandler.RequestPurchase(OrderItem.DayOfTheTentacle, 6);
+            var ae = Assert.Throws<ArgumentException>(() =>
+            {
+                orderHandler.RequestPurchase(OrderItem.DayOfTheTentacle, 6);
+            });
 
-
+            Assert.That(ae.Message, Is.False);
         }
-
-
 
         [Test]
         public void Order1CopyOfFIFA24_ShouldLeave9CopiesRemaining()

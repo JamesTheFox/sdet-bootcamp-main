@@ -1,9 +1,11 @@
-﻿namespace SdetBootcampDay2.TestObjects.Exercises
+﻿using System.Linq.Expressions;
+
+namespace SdetBootcampDay2.TestObjects.Exercises
 {
     public class OrderHandler
     {
         private IDictionary<OrderItem, int>? stock = new Dictionary<OrderItem, int>();
-        public IPayInterface paymentProcessor;
+        private readonly IPayInterface paymentProcessor;
 
         /**
          * TODO: can you apply Dependency Inversion here to make this code more flexible,
@@ -13,7 +15,7 @@
          * After you have done that, update the existing tests and add the tests that were
          * not possible before.
          */
-        public OrderHandler(IDictionary<OrderItem, int> Inventory, IPayInterface PayProc)
+        public OrderHandler(IDictionary<OrderItem, int> Inventory, PaymentProcessor PayProc)
         {
             this.stock = Inventory;
             this.paymentProcessor = PayProc;

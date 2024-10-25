@@ -51,9 +51,12 @@ namespace SdetBootcampDay1.Exercises
         {
             OrderHandler OH = new OrderHandler();
 
-            OH.AddStock(OrderItem.DayOfTheTentacle, 0);
+            var argExc = Assert.Throws<ArgumentException>(() =>
+            {
+                OH.AddStock(OrderItem.DayOfTheTentacle, 10);
+            });
 
-            Assert.That(OH.GetStockFor(OrderItem.FIFA_24), Is.EqualTo(9));
+            Assert.That(argExc!.Message, Is.EqualTo("Unknown item DayOfTheTentacle"));
         }
 
         /**

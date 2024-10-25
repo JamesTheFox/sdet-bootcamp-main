@@ -14,7 +14,7 @@ namespace SdetBootcampDay1.Exercises
 
         [TestCase(100, 50, 50, TestName = "Deposit 100, Withdraw 50")]
         [TestCase(1000, 1000, 0, TestName = "Deposit 1000, Withdraw 1000")]
-        [TestCase(250, 1, 0, TestName = "Deposit 250, Withdraw 1")]
+        [TestCase(250, 1, 249, TestName = "Deposit 250, Withdraw 1")]
 
         public void CreateNewSavingsAccount_Deposit_Num_Withdraw_Num_CheckTotal
             (int dep,int wit,int expectedresult)
